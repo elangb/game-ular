@@ -4,6 +4,25 @@ const CANVAS_SIZE = 600;
 const REDRAW_INTERVAL = 50;
 const WIDTH = CANVAS_SIZE / CELL_SIZE;
 const HEIGHT = CANVAS_SIZE / CELL_SIZE;
+
+//Karakter ular 1
+const kepala1 = new Image();
+kepala1.src = "./assets/api2.png";
+const bodi1 = new Image();
+bodi1.src = "./assets/api2.png";
+
+//Karakter ular 2
+const kepala2 = new Image();
+kepala2.src = "./assets/bola.png";
+const bodi2 = new Image();
+bodi2.src = "./assets/bola.png";
+
+//Karakter ular 3
+const kepala3 = new Image();
+kepala3.src = "./assets/pokemon.png";
+const bodi3 = new Image();
+bodi3.src = "./assets/pokemon.png";
+
 const DIRECTION = {
         LEFT: 0,
         RIGHT: 1,
@@ -41,7 +60,15 @@ function initSnake(color) {
         score: 0,
     }
 }
+
 let snake1 = initSnake("purple");
+// let snake1 = {
+//     color: "red",
+//     ...initHeadAndBody(),
+//     direction: initDirection(),
+//     score: 0
+// }
+
 let snake2 = initSnake("blue");
 // Soal no 6: add snake3
 let snake3 = initSnake("black");
@@ -87,20 +114,22 @@ function draw() {
 
         ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 
-        drawCell(ctx, snake1.head.x, snake1.head.y, snake1.color);
+        //Ular 1
+        ctx.drawImage(bodi1, snake1.head.x * CELL_SIZE, snake1.head.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         for (let i = 1; i < snake1.body.length; i++) {
-            drawCell(ctx, snake1.body[i].x, snake1.body[i].y, snake1.color);
+            ctx.drawImage(bodi1, snake1.body[i].x * CELL_SIZE, snake1.body[i].y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
 
-        drawCell(ctx, snake2.head.x, snake2.head.y, snake2.color);
+        //Ular 2
+        ctx.drawImage(kepala2, snake2.head.x * CELL_SIZE, snake2.head.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         for (let i = 1; i < snake2.body.length; i++) {
-            drawCell(ctx, snake2.body[i].x, snake2.body[i].y, snake2.color);
+            ctx.drawImage(bodi2, snake2.body[i].x * CELL_SIZE, snake2.body[i].y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
 
-        // Soal no 6: Draw Player 3
-        drawCell(ctx, snake3.head.x, snake3.head.y, snake3.color);
+        //Ular 3
+        ctx.drawImage(kepala3, snake3.head.x * CELL_SIZE, snake3.head.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         for (let i = 1; i < snake3.body.length; i++) {
-            drawCell(ctx, snake3.body[i].x, snake3.body[i].y, snake3.color);
+            ctx.drawImage(bodi3, snake3.body[i].x * CELL_SIZE, snake3.body[i].y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
 
         for (let i = 0; i < apples.length; i++) {
@@ -183,13 +212,12 @@ function checkCollision(snakes) {
     }
     if (isCollide) {
         // Soal no 5: Add game over audio:
-        var audio = new Audio('game-over.mp3');
+        var audio = new Audio('./assets/game-over.mp3');
         audio.play();
 
         alert("Game over");
         snake1 = initSnake("purple");
         snake2 = initSnake("blue");
-        snake3 = initSnake("black")
     }
     return isCollide;
 }
