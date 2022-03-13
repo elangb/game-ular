@@ -28,26 +28,3 @@
     align-items: center;
     border-style: solid;
 }
-
-#p1 {
-    margin: 0px;
-}
-
-#p2 {
-    margin: 0px;
-    margin-top: 2px;
-}
-
-
-/* .head {
-    background: linear-gradient(rgb(240, 124, 124), rgb(228, 228, 129));
-    border: 2px solid rgb(34, 4, 34);
-    transform: scale(1.02);
-    border-radius: 9px;
-}
-
-.snake {
-    background-color: purple;
-    border: .25vmin solid white;
-    border-radius: 12px;
-} */
