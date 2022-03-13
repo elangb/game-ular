@@ -13,6 +13,11 @@
     margin-left: 10%;
 }
 
+.text {
+    font-family: 'comic sans ms';
+    font-size: 35px;
+}
+
 #mainBoard {
     width: 500px;
     height: 600px;
